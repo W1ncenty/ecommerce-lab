@@ -4,31 +4,33 @@ import Navbar from './navbar/navbar';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 import ProductList from './product/list';
+import ProductDetails from './product/details';
+import Cart from './cart';
 
 class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { cart: []};
+        this.state = { cart: [] };
     };
 
     addToCart(newItem) {
-        if (!this.state.cart.find(item => item.id === newItem.id)) {
+        // if (!this.state.cart.find(item => item.id === newItem.id)) {
             const newCart = this.state.cart;
             newCart.push(newItem);
             this.setState({ cart: newCart });
-        }
+        // }
     }
 
     render() {
         return (
             <BrowserRouter>
-                <Navbar/>
+                <Navbar numberOfItems={ this.state.cart.length }/>
                 <Route path='/' exact render={
                     (props) =>  <ProductList {...props} addToCart={this.addToCart.bind(this)}/>
                 }/>
-                {/* <Route path='/product/:id' component={ ProductDetails }/> */}
-                {/* <Route path='/cart' component={ Cart }/> */}
+                <Route path='/details/:id' component={ ProductDetails }/>
+                <Route path='/cart' component={ Cart }/>
             </BrowserRouter>
         );
     }
