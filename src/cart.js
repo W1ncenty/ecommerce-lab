@@ -6,10 +6,21 @@ class Cart extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = { showCheckout: false };
     }
 
     removeFromCart(item) {
         this.props.removeFromCart(item);
+    }
+
+    showCheckout() {
+        this.setState({ showCheckout: true });
+    }
+
+    getTotalAmount() {
+        return (Math.round(
+            this.props.items.reduce((sum, item) => { return sum + item.price }, 0) * 100
+        ) / 100).toFixed(2);
     }
 
     render() {
@@ -22,6 +33,14 @@ class Cart extends React.Component {
                 </div>
             </div>
         )
+
+        const checkout = this.state.showCheckout ? (
+            <div className="row mt-2">
+                <p className="lead">Please transfer <strong>${ this.getTotalAmount() }</strong> to the given account number.
+                <br/>Title your transfer 'E-commerce zaliczenie'
+                <br/>CH56 0483 5012 3456 7800</p>
+            </div>
+        ) : null;
 
         return (
             <div className="album py-5 bg-light">
@@ -61,12 +80,13 @@ class Cart extends React.Component {
                             </tbody>
                             </table>
                         </div>
-
-                        <div class="btn-group mr-2">
-                            <button type="button" class="btn btn-sm btn-outline-secondary">Checkout</button>
+                        <div className="btn-group mr-2">
+                            <button onClick={ () => { this.showCheckout() } } type="button" class="btn btn-sm btn-outline-secondary">Checkout</button>
                         </div>
-
                     </div>
+
+                    { checkout }
+
                 </div>
             </div>
         );

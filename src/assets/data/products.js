@@ -7,7 +7,6 @@ const PRODUCTS = [
     { id: '6', name: 'Three fivers', price: 14.99, image: 'assets/img/prod6.jpg' },
     { id: '7', name: 'Not much', price: 5.99, image: 'assets/img/prod7.jpg' },
     { id: '8', name: 'A warm welcome', price: 12.99, image: 'assets/img/prod8.jpg' }
-    // TODO kubuś kochatek
 ];
 
 export default PRODUCTS;
