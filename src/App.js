@@ -7,13 +7,11 @@ import ProductList from './product/list';
 import ProductDetails from './product/details';
 import Cart from './cart';
 
-import PRODUCTS from './assets/data/products';
-
 class App extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = { cart: [PRODUCTS[0], PRODUCTS[1], PRODUCTS[2]] };
+        this.state = { cart: [] };
     };
 
     addToCart(newItem) {

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 
 import PRODUCTS from './assets/data/products';
 
@@ -30,6 +31,7 @@ class Cart extends React.Component {
                     <div className="row">
                         <h2>Shopping cart is empty</h2>
                     </div>
+                    <Link to="/" className="btn btn-outline-secondary">Back to shop</Link>
                 </div>
             </div>
         )
@@ -64,13 +66,13 @@ class Cart extends React.Component {
                                     if (this.props.items.find(item => item.id === product.id)) {
                                         const count = this.props.items.reduce((sum, item) => { return item.id === product.id ? sum + 1 : sum }, 0 );
                                         return (
-                                            <tr>
+                                            <tr key={product.id}>
                                                 <td>{ product.name }</td>
                                                 <td>${ product.price }</td>
                                                 <td>{ count }</td>
-                                                <td>${ product.price * count }</td>
+                                                <td>${ ((product.price * count * 100) / 100).toFixed(2) }</td>
                                                 <td>
-                                                    <button onClick={ () => { this.removeFromCart(product) } } type="button" class="btn btn-sm btn-outline-secondary">Remove</button>
+                                                    <button onClick={ () => { this.removeFromCart(product) } } type="button" className="btn btn-sm btn-outline-secondary">Remove</button>
                                                 </td>
                                             </tr>
                                         );
@@ -81,7 +83,8 @@ class Cart extends React.Component {
                             </table>
                         </div>
                         <div className="btn-group mr-2">
-                            <button onClick={ () => { this.showCheckout() } } type="button" class="btn btn-sm btn-outline-secondary">Checkout</button>
+                            <button onClick={ () => { this.showCheckout() } } type="button" className="btn btn-sm btn-outline-secondary">Checkout</button>
+                            <Link to="/" className="btn btn-outline-secondary">Back to shop</Link>
                         </div>
                     </div>
 

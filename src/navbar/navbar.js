@@ -8,7 +8,6 @@ class Navbar extends React.Component {
             <header>
                 <div className="navbar navbar-dark bg-dark shadow-sm">
                     <div className="container d-flex justify-content-between">
-                        {/* <a href="/" className="navbar-brand d-flex align-items-center"><strong>E-commerce</strong></a> */}
                         <Link to="/" className="navbar-brand d-flex align-items-center"><strong>E-commerce</strong></Link>
                         <Link to="/cart" className="navbar-brand d-flex align-items-center">Your Cart ({this.props.numberOfItems})</Link>
                     </div>
@@ -17,5 +16,5 @@ class Navbar extends React.Component {
         );
     }
 }
-    
+
 export default Navbar;

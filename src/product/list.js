@@ -3,6 +3,17 @@ import { Redirect } from "react-router-dom";
 
 import PRODUCTS from '../assets/data/products';
 
+const bacon = require('../assets/img/bacon.jpg');
+const fivers = require('../assets/img/fivers.jpg');
+const letter = require('../assets/img/letter.jpg');
+const nothing = require('../assets/img/nothing.jpg');
+const pizza = require('../assets/img/pizza.jpg');
+const shoes = require('../assets/img/shoes.jpg');
+const surgery = require('../assets/img/surgery.jpg');
+const welcome = require('../assets/img/welcome.jpg');
+
+const IMAGES = ['', bacon, fivers, letter, nothing, pizza, shoes, surgery, welcome];
+
 class ProductList extends React.Component {
 
     constructor(props) {
@@ -31,9 +42,7 @@ class ProductList extends React.Component {
                         { PRODUCTS.map(product => (
                             <div key={ product.id } className="col-md-4">
                                 <div className="card mb-4 shadow-sm">
-                                    {/* TODO zdjęcia */}
-                                    {/* <svg className="bd-placeholder-img card-img-top" width="100%" height="200" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg> */}
-                                    <img width="100%" height="200" alt="" href="https://github.com/W1ncenty/ecommerce-lab/blob/master/src/assets/img/bacon.jpg"/>
+                                    <img width="100%" height="200" alt="" src={IMAGES[product.id]} />
                                     <div className="card-body">
                                         <p className="card-text">{ product.name }<small className="text-muted float-right">${ product.price }</small></p>
                                         <div className="d-flex justify-content-between align-items-center">
