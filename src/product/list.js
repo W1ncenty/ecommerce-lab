@@ -12,7 +12,7 @@ const shoes = require('../assets/img/shoes.jpg');
 const surgery = require('../assets/img/surgery.jpg');
 const welcome = require('../assets/img/welcome.jpg');
 
-const IMAGES = ['', bacon, fivers, letter, nothing, pizza, shoes, surgery, welcome];
+const IMAGES = ['', bacon, shoes, pizza, letter, surgery, fivers, nothing, welcome];
 
 class ProductList extends React.Component {
 

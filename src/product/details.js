@@ -12,6 +12,10 @@ class ProductDetails extends React.Component {
         };
     }
 
+    addToCart(item) {
+        this.props.addToCart(item);
+    }
+
     render() {
         if (!this.state.product) return (<span>loading</span>);
         return (
@@ -19,6 +23,7 @@ class ProductDetails extends React.Component {
                 <div className="col-md-5 p-lg-5 mx-auto my-5">
                     <h1 className="display-4 font-weight-normal">{ this.state.product.name }</h1>
                     <p className="lead font-weight-normal">${ this.state.product.price }</p>
+                    <button onClick={ () => { this.addToCart(this.state.product) } } type="button" className="btn btn-outline-secondary">Add to cart</button>
                     <Link to="/" className="btn btn-outline-secondary">Back to shop</Link>
                 </div>
                 <div className="product-device shadow-sm d-none d-md-block"></div>

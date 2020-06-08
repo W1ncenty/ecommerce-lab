@@ -33,9 +33,11 @@ class App extends React.Component {
                 <Route path='/' exact render={
                     (props) =>  <ProductList { ...props } addToCart={ this.addToCart.bind(this) }/>
                 }/>
-                <Route path='/details/:id' component={ ProductDetails }/>
+                <Route path='/details/:id' render={
+                    (props) => <ProductDetails { ...props } addToCart={ this.addToCart.bind(this) }/>
+                }/>
                 <Route path='/cart' render={
-                    (props) => <Cart { ...props } items={ this.state.cart } removeFromCart={ this.removeFromCart.bind(this) } />
+                    (props) => <Cart { ...props } items={ this.state.cart } removeFromCart={ this.removeFromCart.bind(this) }/>
                 }/>
             </BrowserRouter>
         );
